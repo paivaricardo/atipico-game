@@ -1,3 +1,4 @@
+import 'package:atipico_game/screens/dificuldade.dart';
 import 'package:atipico_game/screens/intro.dart';
 import 'package:flutter/material.dart';
 

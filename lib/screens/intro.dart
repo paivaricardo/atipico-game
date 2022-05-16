@@ -1,4 +1,5 @@
 import 'package:atipico_game/components/gradient_text.dart';
+import 'package:atipico_game/screens/dificuldade.dart';
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -53,7 +54,9 @@ class IntroScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => DificuldadeScreen()));
+                    },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -71,7 +74,11 @@ class IntroScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        return DificuldadeScreen();
+                      }));
+                    },
                     child: Text(
                       'Tutorial',
                       style: TextStyle(
