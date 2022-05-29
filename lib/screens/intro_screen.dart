@@ -1,5 +1,6 @@
 import 'package:atipico_game/components/gradient_text.dart';
-import 'package:atipico_game/screens/dificuldade.dart';
+import 'package:atipico_game/screens/dificuldade_screen.dart';
+import 'package:atipico_game/screens/tutorial_screen.dart';
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -55,7 +56,10 @@ class IntroScreen extends StatelessWidget {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => DificuldadeScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DificuldadeScreen()));
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -64,8 +68,7 @@ class IntroScreen extends StatelessWidget {
                       minimumSize: MaterialStateProperty.all(Size(250, 60)),
                       backgroundColor:
                           MaterialStateProperty.all(Colors.transparent),
-                      shadowColor:
-                          MaterialStateProperty.all(Colors.black12),
+                      shadowColor: MaterialStateProperty.all(Colors.black12),
                     ),
                     child: Text(
                       'Jogar!',
@@ -75,9 +78,10 @@ class IntroScreen extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return DificuldadeScreen();
-                      }));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TutorialScreen()));
                     },
                     child: Text(
                       'Tutorial',
@@ -96,7 +100,7 @@ class IntroScreen extends StatelessWidget {
                   Icons.volume_up_rounded,
                   color: Colors.amber,
                 ),
-                onPressed: () { },
+                onPressed: () {},
               )),
           Align(
               alignment: Alignment.bottomRight,
