@@ -98,6 +98,19 @@ flutter:
     #   Imagem: robô
     - assets/game_img/level_1/robot_true.png
     - assets/game_img/level_1/robot_false.png
+    #   Imagem: alien
+    - assets/game_img/level_1/alien_true.png
+    - assets/game_img/level_1/alien_false.png
+    #   Imagem: bee
+    - assets/game_img/level_1/bee_true.png
+    - assets/game_img/level_1/bee_false.png
+    #   Imagem: snail
+    - assets/game_img/level_1/snail_true.png
+    - assets/game_img/level_1/snail_false.png
+    #   Imagem: slug
+    - assets/game_img/level_1/slug_true.png
+    - assets/game_img/level_1/slug_false.png
+
 
   fonts:
      - family: Lobster

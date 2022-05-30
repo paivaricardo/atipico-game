@@ -36,10 +36,10 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(32.0),
             child: GradientText(
               'Selecione a imagem... Atípica!',
-              style: TextStyle(fontFamily: 'Lobster', fontSize: 30.0),
+              style: TextStyle(fontFamily: 'Lobster', fontSize: 28.0),
               gradient: RadialGradient(colors: <Color>[
                 Color(0xfffed400),
                 Color(0xffff9900),
@@ -82,85 +82,91 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
     Image imagemPadrao = imagensFornecidas["imagemPadrao"]!;
     Image imagemAlt = imagensFornecidas["imagemAlt"]!;
 
-    return GridView.builder(
-      itemCount: dimensoesMatriz[0] * dimensoesMatriz[1],
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: dimensoesMatriz[1]),
-      itemBuilder: (_, int index) {
-        if (index + 1 ==
-            (((localImagemAlt[0] - 1) * dimensoesMatriz[1]) +
-                localImagemAlt[1])) {
-          return InkWell(
-            onTap: () {
-              setState(() {
-                GameSession.dificuldade++;
-                GameSession.score += GameSession.dificuldade * 10;
-
-                dificuldadeSessaoJogo = GameSession.dificuldade;
-                dimensoesMatriz = GameSession.fornecerDimensoesMatriz();
-                localImagemAlt = GameSession.fornecerPosImgAlt();
-
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: GradientText(
-                    'Acertou!',
-                    style: TextStyle(fontFamily: 'Lobster', fontSize: 36.0),
-                    gradient: RadialGradient(colors: <Color>[
-                      Color(0xfffed400),
-                      Color(0xffff9900),
-                    ]),
-                  ),
-                ));
-              });
-            },
-            child: Container(
-              child: imagemAlt,
-            ),
-          );
-        } else {
-          return InkWell(
-            onTap: () {
-              GameSession.tentativasRestantes--;
-
-              if (GameSession.tentativasRestantes == 0) {
-                Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => GameOverScreen()));
-              } else {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: GridView.builder(
+        itemCount: dimensoesMatriz[0] * dimensoesMatriz[1],
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: dimensoesMatriz[1]),
+        itemBuilder: (_, int index) {
+          if (index + 1 ==
+              (((localImagemAlt[0] - 1) * dimensoesMatriz[1]) +
+                  localImagemAlt[1])) {
+            return InkWell(
+              onTap: () {
                 setState(() {
+                  GameSession.dificuldade++;
+                  GameSession.score += GameSession.dificuldade * 10;
+
                   dificuldadeSessaoJogo = GameSession.dificuldade;
                   dimensoesMatriz = GameSession.fornecerDimensoesMatriz();
                   localImagemAlt = GameSession.fornecerPosImgAlt();
 
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    duration: Duration(milliseconds: 400),
                     content: GradientText(
-                      () {
-                        if (GameSession.tentativasRestantes == 1) {
-                          return 'Errou... resta apenas ' +
-                              GameSession.tentativasRestantes.toString() +
-                              ' tentativa. Cuidado!';
-                        } else {
-                          return 'Errou... restam ' +
-                              GameSession.tentativasRestantes.toString() +
-                              ' tentativas.';
-                        }
-                      }(),
-                      style: const TextStyle(
-                          fontFamily: 'Lobster', fontSize: 36.0),
-                      gradient: const RadialGradient(colors: <Color>[
+                      'Acertou!',
+                      style: TextStyle(fontFamily: 'Lobster', fontSize: 24.0),
+                      gradient: RadialGradient(colors: <Color>[
                         Color(0xfffed400),
                         Color(0xffff9900),
                       ]),
                     ),
                   ));
                 });
-              }
-            },
-            child: Container(
-              child: imagemPadrao,
-            ),
-          );
-        }
-      },
+              },
+              child: Container(
+                child: imagemAlt,
+              ),
+            );
+          } else {
+            return InkWell(
+              onTap: () {
+                GameSession.tentativasRestantes--;
+
+                if (GameSession.tentativasRestantes == 0) {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GameOverScreen()));
+                } else {
+                  setState(() {
+                    dificuldadeSessaoJogo = GameSession.dificuldade;
+                    dimensoesMatriz = GameSession.fornecerDimensoesMatriz();
+                    localImagemAlt = GameSession.fornecerPosImgAlt();
+
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(milliseconds: 400),
+                      // backgroundColor: Color(),
+                      content: GradientText(
+                        () {
+                          if (GameSession.tentativasRestantes == 1) {
+                            return 'Errou... resta apenas ' +
+                                GameSession.tentativasRestantes.toString() +
+                                ' tentativa. Cuidado!';
+                          } else {
+                            return 'Errou... restam ' +
+                                GameSession.tentativasRestantes.toString() +
+                                ' tentativas.';
+                          }
+                        }(),
+                        style: const TextStyle(
+                            fontFamily: 'Lobster', fontSize: 24.0),
+                        gradient: const RadialGradient(colors: <Color>[
+                          Color(0xfffed400),
+                          Color(0xffff9900),
+                        ]),
+                      ),
+                    ));
+                  });
+                }
+              },
+              child: Container(
+                child: imagemPadrao,
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
