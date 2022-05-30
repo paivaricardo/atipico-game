@@ -8,6 +8,8 @@ class DificuldadeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GameSession.reset();
+
     double? screenWidth = MediaQuery.of(context).size.width;
     double? screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -165,7 +167,7 @@ class DificuldadeScreen extends StatelessWidget {
                   padding: EdgeInsets.only(top: 24.0),
                   child: Text('Pontuação mais alta:', style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
                 ),
-                Text(GameSession.tempMaxScore.toString(), style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
+                Text(GameSession.maxScore.toString(), style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
               ],
             ),
           ),

@@ -91,6 +91,14 @@ flutter:
   assets:
     - assets/img/fundo_atpc.png
 
+#   Aqui vão os assets das imagens utilizadas no jogo
+    #   Imagem: cavalo
+    - assets/game_img/level_1/true_horse.png
+    - assets/game_img/level_1/false_horse.png
+    #   Imagem: robô
+    - assets/game_img/level_1/robot_true.png
+    - assets/game_img/level_1/robot_false.png
+
   fonts:
      - family: Lobster
        fonts:
