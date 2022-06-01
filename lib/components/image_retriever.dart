@@ -3,8 +3,8 @@ import 'package:atipico_game/components/image_generator.dart';
 import 'package:flutter/material.dart';
 
 class ImageRetriever {
-  static Map<String, Image> fornecerImagens() {
-    int dificuldadeJogo = GameSession.dificuldade;
+  static Map<String, Image> fornecerImagens(int dificuldade) {
+    int dificuldadeJogo = dificuldade;
 
     return ImageGenerator.gerarImagens(dificuldadeJogo);
 

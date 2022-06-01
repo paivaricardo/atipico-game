@@ -46,11 +46,6 @@ class ImageGenerator {
     final Image imagemAssetRetornadaAlt =
         Image.asset(imagemSelecionada.diretorioImgAlt);
 
-    // DEBUG
-    print("Diretórios das imagens:");
-    print(imagemSelecionada.diretorioImgPrincipal);
-    print(imagemSelecionada.diretorioImgAlt);
-
     return {
       "imagemPadrao": imagemAssetRetornadaPadrao,
       "imagemAlt": imagemAssetRetornadaAlt,

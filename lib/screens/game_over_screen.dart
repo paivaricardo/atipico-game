@@ -2,15 +2,16 @@ import 'package:atipico_game/components/game_session.dart';
 import 'package:atipico_game/components/gradient_text.dart';
 import 'package:atipico_game/screens/dificuldade_screen.dart';
 import 'package:atipico_game/screens/intro_screen.dart';
-import 'package:atipico_game/screens/tela_jogo_screen.dart';
 import 'package:flutter/material.dart';
 
 class GameOverScreen extends StatelessWidget {
-  const GameOverScreen({Key? key}) : super(key: key);
+  GameSession gameSession;
+
+  GameOverScreen({required this.gameSession, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    GameSession.maxScore = GameSession.score;
+    GameSession.maxScore = gameSession.score;
 
     double? screenWidth = MediaQuery.of(context).size.width;
     double? screenHeight = MediaQuery.of(context).size.height;
@@ -38,12 +39,12 @@ class GameOverScreen extends StatelessWidget {
                     Color(0xffff9900),
                   ]),
                 ),
-                const Text('Você infelizmente perdeu!', style: TextStyle(fontFamily: 'Farro', color: Colors.amberAccent, fontSize: 32.0),),
+                const Text('Fim de jogo!', style: TextStyle(fontFamily: 'Farro', color: Colors.amberAccent, fontSize: 32.0),),
                 const Padding(
                   padding: EdgeInsets.only(top: 24.0),
                   child: Text('Sua pontuação:', style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
                 ),
-                Text(GameSession.score.toString(), style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
+                Text(gameSession.score.toString(), style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
                 const Padding(
                   padding: EdgeInsets.only(top: 24.0),
                   child: Text('Pontuação mais alta:', style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),

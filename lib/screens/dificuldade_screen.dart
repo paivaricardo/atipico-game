@@ -8,7 +8,7 @@ class DificuldadeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GameSession.reset();
+    int dificuldadeSelecionada = 1;
 
     double? screenWidth = MediaQuery.of(context).size.width;
     double? screenHeight = MediaQuery.of(context).size.height;
@@ -36,7 +36,13 @@ class DificuldadeScreen extends StatelessWidget {
                     Color(0xffff9900),
                   ]),
                 ),
-                const Text('Dificuldade:', style: TextStyle(fontFamily: 'Farro', color: Colors.amberAccent, fontSize: 32.0),),
+                const Text(
+                  'Dificuldade:',
+                  style: TextStyle(
+                      fontFamily: 'Farro',
+                      color: Colors.amberAccent,
+                      fontSize: 32.0),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24.0),
                   child: Container(
@@ -59,18 +65,25 @@ class DificuldadeScreen extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        GameSession.dificuldade = 1;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TelaJogoScreen()));
+                        dificuldadeSelecionada = 1;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TelaJogoScreen(
+                                      dificuldadeSelecionada:
+                                          dificuldadeSelecionada,
+                                    )));
                       },
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15))),
-                        minimumSize: MaterialStateProperty.all(const Size(250, 60)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15))),
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(250, 60)),
                         backgroundColor:
-                        MaterialStateProperty.all(Colors.transparent),
-                        shadowColor:
-                        MaterialStateProperty.all(Colors.black12),
+                            MaterialStateProperty.all(Colors.transparent),
+                        shadowColor: MaterialStateProperty.all(Colors.black12),
                       ),
                       child: const Text(
                         'Fácil',
@@ -101,18 +114,25 @@ class DificuldadeScreen extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        GameSession.dificuldade = 4;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TelaJogoScreen()));
+                        dificuldadeSelecionada = 4;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TelaJogoScreen(
+                                      dificuldadeSelecionada:
+                                          dificuldadeSelecionada,
+                                    )));
                       },
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15))),
-                        minimumSize: MaterialStateProperty.all(const Size(250, 60)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15))),
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(250, 60)),
                         backgroundColor:
-                        MaterialStateProperty.all(Colors.transparent),
-                        shadowColor:
-                        MaterialStateProperty.all(Colors.black12),
+                            MaterialStateProperty.all(Colors.transparent),
+                        shadowColor: MaterialStateProperty.all(Colors.black12),
                       ),
                       child: const Text(
                         'Moderado',
@@ -143,18 +163,25 @@ class DificuldadeScreen extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        GameSession.dificuldade = 7;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TelaJogoScreen()));
+                        dificuldadeSelecionada = 7;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TelaJogoScreen(
+                                      dificuldadeSelecionada:
+                                          dificuldadeSelecionada,
+                                    )));
                       },
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15))),
-                        minimumSize: MaterialStateProperty.all(const Size(250, 60)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15))),
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(250, 60)),
                         backgroundColor:
-                        MaterialStateProperty.all(Colors.transparent),
-                        shadowColor:
-                        MaterialStateProperty.all(Colors.black12),
+                            MaterialStateProperty.all(Colors.transparent),
+                        shadowColor: MaterialStateProperty.all(Colors.black12),
                       ),
                       child: const Text(
                         'Difícil',
@@ -165,9 +192,21 @@ class DificuldadeScreen extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 24.0),
-                  child: Text('Pontuação mais alta:', style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
+                  child: Text(
+                    'Pontuação mais alta:',
+                    style: TextStyle(
+                        fontFamily: 'Lobster',
+                        color: Colors.amberAccent,
+                        fontSize: 32.0),
+                  ),
                 ),
-                Text(GameSession.maxScore.toString(), style: TextStyle(fontFamily: 'Lobster', color: Colors.amberAccent, fontSize: 32.0),),
+                Text(
+                  GameSession.maxScore.toString(),
+                  style: TextStyle(
+                      fontFamily: 'Lobster',
+                      color: Colors.amberAccent,
+                      fontSize: 32.0),
+                ),
               ],
             ),
           ),
@@ -178,7 +217,7 @@ class DificuldadeScreen extends StatelessWidget {
                   Icons.volume_up_rounded,
                   color: Colors.amber,
                 ),
-                onPressed: () { },
+                onPressed: () {},
               )),
           Align(
               alignment: Alignment.bottomRight,
