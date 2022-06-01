@@ -99,7 +99,7 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    height: 50,
+                    height: 25,
                     child: Slider(
                       value: countDownMilissegundos.toDouble(),
                       onChanged: (value) {},
@@ -107,12 +107,16 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
                       max: tempoTotalJogoMilissegundos.toDouble(),
                     ),
                   ),
-                  Text(
-                    'Score: ' + widget.gameSession.score.toString(),
-                    style: TextStyle(
-                        fontFamily: 'Farro',
-                        color: Colors.amberAccent,
-                        fontSize: 32.0),
+                  buildWidgetTentativasRestantes(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: Text(
+                      'Score: ' + widget.gameSession.score.toString(),
+                      style: TextStyle(
+                          fontFamily: 'Farro',
+                          color: Colors.amberAccent,
+                          fontSize: 32.0),
+                    ),
                   ),
                 ],
               ),
@@ -247,5 +251,25 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
     Navigator.pop(context);
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => GameOverScreen(gameSession: widget.gameSession,)));
+  }
+
+  Widget buildWidgetTentativasRestantes() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: () {
+        List<Widget> indicadorTentativasRestantes = [];
+
+        for (int i = 0; i < widget.gameSession.tentativasRestantes; i ++) {
+          indicadorTentativasRestantes.add(
+            Container(
+              child: const Icon(Icons.favorite_rounded, color: Colors.red, size: 32.0,),
+            )
+          );
+        }
+
+        return indicadorTentativasRestantes;
+
+      } (),
+    );
   }
 }
