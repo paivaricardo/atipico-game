@@ -98,6 +98,7 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
               height: 200,
               child: Column(
                 children: <Widget>[
+                  buildComboTextWidget(),
                   Container(
                     height: 25,
                     child: Slider(
@@ -170,6 +171,7 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
   }
 
   void invokeErro() {
+    widget.gameSession.comboChain = 0;
     widget.gameSession.tentativasRestantes--;
 
     if (widget.gameSession.tentativasRestantes == 0) {
@@ -207,7 +209,8 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
   void invokeAcerto() {
     setState(() {
       widget.gameSession.dificuldade++;
-      widget.gameSession.score += widget.gameSession.dificuldade * 10;
+      widget.gameSession.score += widget.gameSession.dificuldade * 10 * (widget.gameSession.comboChain <= 2.5 ? 1 : widget.gameSession.comboChain.toDouble()/2.5).toInt();
+      widget.gameSession.comboChain++;
 
       incrementTimer();
 
@@ -272,4 +275,21 @@ class _TelaJogoScreenState extends State<TelaJogoScreen> {
       } (),
     );
   }
+
+  Widget buildComboTextWidget() {
+    return Visibility(
+      visible: (widget.gameSession.comboChain > 1),
+      child: Text(
+        'Combo: ' + widget.gameSession.comboChain.toString() + " x",
+        style: TextStyle(
+            fontFamily: 'Farro',
+            color: Colors.amberAccent,
+            fontSize: 32.0),
+      ),
+    );
+  }
+
+  // Widget buildTextMensagemJogador() {
+  //
+  // }
 }
